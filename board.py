@@ -422,7 +422,6 @@ class GoBoard(object):
         State of move and appropriate message for that move
         """
 
-        if self.board[point] != EMPTY:    # GOOOD
             c=self._point_to_coord(point)
             msg = "Row and Column: %d %d is already filled with a %s stone"%(c[0],c[1],GoBoardUtil.int_to_color(color))
             return False,msg
@@ -444,7 +443,7 @@ class GoBoard(object):
                  
                     if not self._liberty_flood(fboard):
                         # if there are no more liberties for a certain stone, come here
-                        print('Hey we are here')
+                        print('Hey we are here at liberty flood')
                         cap_inds = fboard==FLOODFILL
                         #self.caps = np.where(fboard==FLOODFILL)
                         self.caps += list(*np.where(fboard==FLOODFILL))

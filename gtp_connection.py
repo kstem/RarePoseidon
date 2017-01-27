@@ -99,9 +99,12 @@ class GtpConnection():
         command : str
             the raw command to parse/execute
         """
+        print ("at get_cmd function") #TODO:  this is where we get a command
         if len(command.strip(' \r\t')) == 0:
+            print ("first if")
             return
         if command[0] == '#':
+            print ("second if")
             return
         # Strip leading numbers from regression tests
         if command[0].isdigit():
