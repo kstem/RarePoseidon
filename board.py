@@ -454,11 +454,14 @@ class GoBoard(object):
                         if num_captures == 1:
                             single_captures.append(n)
                         if color==WHITE:
-                            break # TODO: error message, undo move, return to player to make a new move
+                         # TODO: error message, undo move, return to player to make a new move
                             # MAYBE in here, just make an error message saying cant do that move
                             # allow player to makw a different move
                             # HERE
-                            self.white_captures += num_captures
+                            #self.white_captures += num_captures
+                            print("error: no liberites")
+                            
+                            #so despit not actually having any code here, white still somehow takes out black
                         else :
                             break #TODO error message, undo move, return to player to make a new move
                             # error messages are in gtp_connection.py

@@ -290,29 +290,35 @@ class GtpConnection():
         args[1] : str
             the move to play (e.g. A5)
         """
+      #  print("play_cmd")
         try:
+          #  print("play_cmd try") # remove
             board_color = args[0].lower()
             board_move = args[1]
             color= GoBoardUtil.color_to_int(board_color)
             if args[1].lower()=='pass':
+                #print("play_cmd if #1")
+                
                 self.debug_msg("Player {} is passing\n".format(args[0]))
                 self.respond()
                 return
             move = GoBoardUtil.move_to_coord(args[1], self.board.size)
-            if move:
+            if move: # if move is a1, move is (1, 1). the numeric version of args[1]
+             #   print("play_cmd if #2") # remove
+            #    print("move: ", move) # remove
+      #          print("args[1]: ", args[1]) # remove
                 move = self.board._coord_to_point(move[0],move[1])
             # move == None on pass
             else:
                 self.error("Error in executing the move %s, check given move: %s"%(move,args[1]))
                 return
             if not self.board.move(move, color):
-                self.respond("Illegal Move: {}".format(board_move))
                 return
             else:
                 self.debug_msg("Move: {}\nBoard:\n{}\n".format(board_move, str(self.board.get_twoD_board())))
             self.respond()
-        except Exception as e:
-            self.respond('Error: {}'.format(str(e)))
+        except Exception as e: # illegal chars handled here
+            self.respond('Error: {}'.format(str(e))) 
 
     def final_score_cmd(self, args):
         self.respond(self.board.final_score(self.komi))
@@ -329,6 +335,7 @@ class GtpConnection():
             color : {0,1}
             board_color : {'b','w'}
         """
+        print("genmove_cmd")
         try:
             board_color = args[0].lower()
             color = GoBoardUtil.color_to_int(board_color)
