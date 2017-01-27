@@ -421,7 +421,7 @@ class GoBoard(object):
         ---------
         State of move and appropriate message for that move
         """
-
+        if self.board[point] != EMPTY:
             c=self._point_to_coord(point)
             msg = "Row and Column: %d %d is already filled with a %s stone"%(c[0],c[1],GoBoardUtil.int_to_color(color))
             return False,msg
