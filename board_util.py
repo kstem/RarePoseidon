@@ -52,9 +52,11 @@ class GoBoardUtil(object):
         illegal_moves = []
 
         for i in range(num_moves):
-            if board.check_legal(moves[i],color): # checks every box to see if legal.
+            if board.check_legal(moves[i],color): 
+                #and not _liberty_flood(self,board) -- checks liiberties
+                # checks every box to see if legal.
                 #but where is check_legal?
-                print("board.check_legal(moves[i],color):  ", board.check_legal(moves[i],color))
+                #check here if there are any liberites? helper function
                 continue
             else:
                 illegal_moves.append(i)
