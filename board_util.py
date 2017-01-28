@@ -52,7 +52,9 @@ class GoBoardUtil(object):
         illegal_moves = []
 
         for i in range(num_moves):
-            if board.check_legal(moves[i],color):
+            if board.check_legal(moves[i],color): # checks every box to see if legal.
+                #but where is check_legal?
+                print("board.check_legal(moves[i],color):  ", board.check_legal(moves[i],color))
                 continue
             else:
                 illegal_moves.append(i)
