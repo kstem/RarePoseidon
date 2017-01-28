@@ -453,7 +453,8 @@ class GoBoard(object):
                             self._is_empty = True
                         if num_captures == 1:
                             single_captures.append(n)
-                        if color==WHITE:
+                        if self._liberty_flood(fboard) and color==WHITE:
+                            #testin the self._liberty_flood
                          # TODO: error message, undo move, return to player to make a new move
                             # MAYBE in here, just make an error message saying cant do that move
                             # allow player to makw a different move
@@ -463,10 +464,11 @@ class GoBoard(object):
                             
                             #so despit not actually having any code here, white still somehow takes out black
                         else :
-                            break #TODO error message, undo move, return to player to make a new move
+                            #break #TODO error message, undo move, return to player to make a new move
                             # error messages are in gtp_connection.py
                             self.black_captures += num_captures
                         self.board[cap_inds]=EMPTY
+                        
                         #### THIS IS WHERE WE REMOVE CAPTURED STONE
                         #TODO: NEED TO keep track so we know when game ends
                         # eg if there is no where left you are allowed to play, game is ove
@@ -475,6 +477,7 @@ class GoBoard(object):
         self.ko_constraint = single_captures[0] if in_enemy_eye and len(single_captures) == 1 else None
         if self._liberty_flood(fboard) and self.suicide:
             #non suicidal move
+            #if there are liberties
             c=self._point_to_coord(point)
             msg = "Playing a move with %s color in the row and column %d %d is permited"%(color,c[0],c[1])
             return True, msg

@@ -99,15 +99,17 @@ class GtpConnection():
         command : str
             the raw command to parse/execute
         """
-        print ("at get_cmd function") #TODO:  this is where we get a command
+     #   print ("at get_cmd function") #TODO:  this is where we get a command
         if len(command.strip(' \r\t')) == 0:
             print ("first if")
             return
         if command[0] == '#':
             print ("second if")
+            print(command_name, "That was the command name")
             return
         # Strip leading numbers from regression tests
         if command[0].isdigit():
+            print("third if")
             command = re.sub("^\d+", "", command).lstrip()
 
         elements = command.split()
@@ -268,10 +270,13 @@ class GtpConnection():
             color : {0,1}
             board_color : {'b','w'}
         """
+        print("legal_moves_cmd")
         try:
-            board_color = args[0].lower()
+            print("legal_moves_cmd try")
+            board_color = args[0].lower() # make board_color == b or w
             color= GoBoardUtil.color_to_int(board_color)
             moves=GoBoardUtil.generate_legal_moves(self.board,color)
+            #generate_legal_moves in board_util.py
             self.respond(moves)
         except Exception as e:
             self.respond('Error: {}'.format(str(e)))
