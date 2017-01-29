@@ -5,6 +5,11 @@ BORDER = 3
 FLOODFILL = 4
 import numpy as np
 
+   #TODO: shitty global function that returns if move elimantes all liberties
+def testFunc(board):
+    print("ayyyy testFunc")
+
+
 class GoBoardUtil(object):
     
     @staticmethod       
@@ -57,6 +62,7 @@ class GoBoardUtil(object):
                 # checks every box to see if legal.
                 #but where is check_legal?
                 #check here if there are any liberites? helper function
+                testFunc(board)
                 continue
             else:
                 illegal_moves.append(i)

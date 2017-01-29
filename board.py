@@ -33,6 +33,7 @@ class GoBoard(object):
         Return:
             color
         """
+
         move_inspection, msg =self._play_move(point,color)
         if not move_inspection:
             return False
@@ -460,13 +461,14 @@ class GoBoard(object):
                             # allow player to makw a different move
                             # HERE
                             #self.white_captures += num_captures
-                            print("error: no liberites")
-                            
+                            print("error: no liberites for white capturing")
+                           # self.white_captures += num_captures
                             #so despit not actually having any code here, white still somehow takes out black
                         else :
                             #break #TODO error message, undo move, return to player to make a new move
                             # error messages are in gtp_connection.py
-                            self.black_captures += num_captures
+                           # self.black_captures += num_captures
+                           print("error: no liberties for black capturing")
                         self.board[cap_inds]=EMPTY
                         
                         #### THIS IS WHERE WE REMOVE CAPTURED STONE
@@ -624,4 +626,5 @@ class GoBoard(object):
             return 'pass'
         row, col = divmod(point, self.NS)
         return row,col
+
 

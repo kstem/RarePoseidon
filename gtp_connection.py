@@ -217,7 +217,7 @@ class GtpConnection():
         Set the komi for the game
 
         Arguments
-        ---------
+        ---------get_twoD_board
         args[0] : float
             komi value
         """
@@ -276,7 +276,7 @@ class GtpConnection():
             board_color = args[0].lower() # make board_color == b or w
             color= GoBoardUtil.color_to_int(board_color)
             moves=GoBoardUtil.generate_legal_moves(self.board,color)
-            #generate_legal_moves in board_util.py
+            #generate_legal_moves
             self.respond(moves)
         except Exception as e:
             self.respond('Error: {}'.format(str(e)))
