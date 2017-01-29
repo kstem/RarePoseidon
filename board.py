@@ -443,6 +443,9 @@ class GoBoard(object):
                     fboard = self._flood_fill(n)
                  
                     if not self._liberty_flood(fboard):
+                        print("no es bueno")
+                        #msg = "no es bueno"
+                        #return False , msg
                         # if there are no more liberties for a certain stone, come here
                         print('Hey we are here at liberty flood')
                         cap_inds = fboard==FLOODFILL
@@ -480,6 +483,10 @@ class GoBoard(object):
         if self._liberty_flood(fboard) and self.suicide:
             #non suicidal move
             #if there are liberties
+            if cap_inds != None:
+                print("Hi sorry, no captures allowed...")
+                msg = "remember, no russian"
+                return False, msg
             c=self._point_to_coord(point)
             msg = "Playing a move with %s color in the row and column %d %d is permited"%(color,c[0],c[1])
             return True, msg

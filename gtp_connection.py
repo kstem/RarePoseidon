@@ -105,7 +105,7 @@ class GtpConnection():
             return
         if command[0] == '#':
             print ("second if")
-            print(command_name, "That was the command name")
+            #print(command_name, "That was the command name")
             return
         # Strip leading numbers from regression tests
         if command[0].isdigit():

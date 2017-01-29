@@ -62,7 +62,7 @@ class GoBoardUtil(object):
                 # checks every box to see if legal.
                 #but where is check_legal?
                 #check here if there are any liberites? helper function
-                testFunc(board)
+                #testFunc(board)
                 continue
             else:
                 illegal_moves.append(i)
